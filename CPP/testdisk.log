@@ -1,0 +1,141 @@
+
+
+Sun Apr 26 00:25:58 2020
+Command line: TestDisk
+
+TestDisk 7.0, Data Recovery Utility, April 2015
+Christophe GRENIER <grenier@cgsecurity.org>
+http://www.cgsecurity.org
+OS: Linux, kernel 5.3.0-46-generic (#38~18.04.1-Ubuntu SMP Tue Mar 31 04:17:56 UTC 2020) x86_64
+Compiler: GCC 7.2
+ext2fs lib: 1.44.1, ntfs lib: libntfs-3g, reiserfs lib: none, ewf lib: none, curses lib: ncurses 6.0
+/dev/sda: LBA, HPA, LBA48, DCO support
+/dev/sda: size       1953525168 sectors
+/dev/sda: user_max   1953525168 sectors
+/dev/sda: native_max 1953525168 sectors
+/dev/sda: dco        1953525168 sectors
+Warning: can't get size for Disk /dev/mapper/control - 0 B - 0 sectors, sector size=512
+Hard disk list
+Disk /dev/sda - 1000 GB / 931 GiB - CHS 121601 255 63, sector size=512 - ST1000LM035-1RK172, S/N:WCB19WZG, FW:SDM1
+
+Partition table type (auto): EFI GPT
+Disk /dev/sda - 1000 GB / 931 GiB - ST1000LM035-1RK172
+Partition table type: None
+
+Interface Advanced
+   P Unknown                  0   0  1 121601  80 63 1953525168
+
+Interface Advanced
+   P Unknown                  0   0  1 121601  80 63 1953525168
+Change partition type:
+   P Unknown                  0   0  1 121601  80 63 1953525168
+Change partition type:
+   P Unknown                  0   0  1 121601  80 63 1953525168
+Change partition type:
+   P Unknown                  0   0  1 121601  80 63 1953525168
+
+Analyse Disk /dev/sda - 1000 GB / 931 GiB - CHS 121601 255 63
+Current partition structure:
+   P Unknown                  0   0  1 121601  80 63 1953525168
+
+search_part()
+Disk /dev/sda - 1000 GB / 931 GiB - CHS 121601 255 63
+NTFS at 0/32/33
+filesystem size           921600
+sectors_per_cluster       8
+mft_lcn                   38400
+mftmirr_lcn               2
+clusters_per_mft_record   -10
+clusters_per_index_record 1
+NTFS part_offset=1048576, part_size=471859200, sector_size=512
+NTFS partition cannot be added (part_offset<part_size).
+NTFS at 0/32/33
+filesystem size           921600
+sectors_per_cluster       8
+mft_lcn                   38400
+mftmirr_lcn               2
+clusters_per_mft_record   -10
+clusters_per_index_record 1
+     NTFS                     0  32 33    57 126  5     921600
+     NTFS, blocksize=4096, 471 MB / 450 MiB
+FAT32 at 57/126/6
+FAT1 : 6654-7422
+FAT2 : 7423-8191
+start_rootdir : 8192 root cluster : 2
+Data : 8192-204799
+sectors : 204800
+cluster_size : 2
+no_of_cluster : 98304 (2 - 98305)
+fat_length 769 calculated 769
+set_FAT_info: name from BS used
+
+FAT32 at 57/126/6
+     FAT32                   57 126  6    70  61 55     204800 [NO NAME]
+     FAT32, blocksize=1024, 104 MB / 100 MiB
+NTFS at 72/72/1
+filesystem size           461373433
+sectors_per_cluster       8
+mft_lcn                   21092587
+mftmirr_lcn               3
+clusters_per_mft_record   -10
+clusters_per_index_record 1
+NTFS part_offset=594542592, part_size=236223197696, sector_size=512
+NTFS partition cannot be added (part_offset<part_size).
+NTFS at 72/72/1
+filesystem size           461373433
+sectors_per_cluster       8
+mft_lcn                   21092587
+mftmirr_lcn               3
+clusters_per_mft_record   -10
+clusters_per_index_record 1
+     NTFS                    72  72  1 28791 114 52  461373433
+     NTFS, blocksize=4096, 236 GB / 219 GiB
+NTFS at 28791/114/59
+filesystem size           461373433
+sectors_per_cluster       8
+mft_lcn                   21092587
+mftmirr_lcn               3
+clusters_per_mft_record   -10
+clusters_per_index_record 1
+     NTFS                    72  72  8 28791 114 59  461373433
+     NTFS found using backup sector, blocksize=4096, 236 GB / 219 GiB
+NTFS at 28791/114/59
+filesystem size           461373433
+sectors_per_cluster       8
+mft_lcn                   21092587
+mftmirr_lcn               3
+clusters_per_mft_record   -10
+clusters_per_index_record 1
+     NTFS                 28791 114 59 57510 157 47  461373433
+     NTFS, blocksize=4096, 236 GB / 219 GiB
+Search for partition aborted
+
+Results
+   P NTFS                     0  32 33    57 126  5     921600
+     NTFS, blocksize=4096, 471 MB / 450 MiB
+   P FAT32                   57 126  6    70  61 55     204800 [NO NAME]
+     FAT32, blocksize=1024, 104 MB / 100 MiB
+   P NTFS                    72  72  1 28791 114 52  461373433
+     NTFS, blocksize=4096, 236 GB / 219 GiB
+   P NTFS                    72  72  8 28791 114 59  461373433
+     NTFS found using backup sector, blocksize=4096, 236 GB / 219 GiB
+   P NTFS                 28791 114 59 57510 157 47  461373433
+     NTFS, blocksize=4096, 236 GB / 219 GiB
+
+Hint for advanced users. dmsetup may be used if you prefer to avoid to rewrite the partition table for the moment:
+echo "0 921600 linear /dev/sda 2048" | dmsetup create test0
+echo "0 204800 linear /dev/sda 923648" | dmsetup create test1
+echo "0 461373433 linear /dev/sda 1161216" | dmsetup create test2
+echo "0 461373433 linear /dev/sda 1161223" | dmsetup create test3
+echo "0 461373433 linear /dev/sda 462534655" | dmsetup create test4
+
+interface_write()
+   P NTFS                     0  32 33    57 126  5     921600
+   P FAT32                   57 126  6    70  61 55     204800 [NO NAME]
+   P NTFS                    72  72  1 28791 114 52  461373433
+   P NTFS                    72  72  8 28791 114 59  461373433
+   P NTFS                 28791 114 59 57510 157 47  461373433
+ 
+Write isn't available because the partition table type "None" has been selected.
+
+TestDisk exited normally.
