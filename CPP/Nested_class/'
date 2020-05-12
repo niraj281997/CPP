@@ -1,0 +1,95 @@
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+class Student
+{
+	char name[30];
+	int Rollnumber;
+	class Address
+	{
+		private:
+			int house_no;
+			char street[20],city[20],state[20],pincode[20];
+		public:
+			Address()
+			{
+				cout<<"Default Constructor"<<endl;
+			}
+			void hello()
+			{
+				cout<<"hello"<<endl;
+			}
+			void setaddress(int h,char *a,char *b ,char*c,char *d)
+			{
+			house_no=h;
+			strcpy(street,a);
+			strcpy(city,b);
+			strcpy(state,c);
+			strcpy(pincode,d);
+			}
+			void printaddress()
+			{
+				cout<<"Address: "<<house_no<<endl<<street<<endl<<city<<endl<<state<<endl<<pincode<<endl;
+			}
+			void inter()
+			{	string s;
+				cout<<"house Number";
+				cin>>house_no;
+				cout<<endl<<"street Number :";
+				getline(cin,s);
+			//	strcpy(street,s);
+				s.clear();
+				//cin>>street;
+				cout<<endl<<"Name of city :";
+				cin>>city;
+				cout<<endl<<"Name of state :";
+				cin>>state;
+				cout<<endl<<"Name of pincode :";
+				cin>>pincode;
+			}
+	};
+
+	Address add;
+	public:
+		void setstudent(char *n,int R,int h,char *a,char *b ,char*c,char *d)
+		{
+			strcpy(name,n);
+			Rollnumber=R;
+			add.setaddress(h,a,b,c,d);
+		}
+		void printstudent()
+		{
+			cout<<"Name: "<<name<<endl<<"Roll_Number: "<<Rollnumber<<endl;
+			add.printaddress();
+		}
+		void setname()
+		{	cout<<"Enter Name ";
+			cin>>name;
+			cout<<endl;
+		}
+		void setrollno()
+		{	cout<<"Enter Rollnumber ";
+			cin>>Rollnumber;
+			cout<<endl;
+		}
+		void setaddress()
+		{	cout<<"Set Address";
+			add.inter();
+			cout<<endl;
+		}
+
+};
+
+
+int main()
+{
+	int n;
+	cout<<"Number of student ";
+	cin>>n;
+
+	Student *ptr = new Student[n];
+//	Student[0].hello();
+	
+	return 0;
+}
